@@ -1,0 +1,474 @@
+/* ==========================================================================
+   HR LEARNER HUB — GRAND DIWALI CELEBRATION EXPERIENCE
+   High-end Festive Styles: Royal Gold, Deep Purple, Midnight Blue, Crimson
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,400&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --color-gold-light: #fff3b0;
+  --color-gold: #ffd700;
+  --color-gold-dark: #b8860b;
+  --color-amber: #ff9100;
+  --color-crimson: #c2185b;
+  --color-maroon: #881337;
+  --color-purple-deep: #16062a;
+  --color-purple-mid: #2b0c48;
+  --color-blue-midnight: #060919;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-royal: 'Cinzel', serif;
+  --font-sans: 'Poppins', Verdana, sans-serif;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: var(--color-blue-midnight);
+  font-family: var(--font-sans);
+  color: #fff;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Background gradient sky */
+.sky-bg {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background: radial-gradient(circle at 50% 30%, #200835 0%, #110524 45%, #050716 100%);
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Distant Indian Heritage Skyline Silhouette */
+.heritage-skyline {
+  position: absolute;
+  bottom: 50px;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  background-repeat: repeat-x;
+  background-position: bottom center;
+  background-size: 600px 120px;
+  opacity: 0.22;
+  filter: drop-shadow(0 -5px 15px rgba(255, 170, 0, 0.15));
+  pointer-events: none;
+}
+
+/* Hanging Toran / Marigold Garland across the top */
+.festive-toran {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 48px;
+  z-index: 5;
+  pointer-events: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  overflow: hidden;
+}
+
+.toran-arch {
+  flex: 1;
+  height: 38px;
+  background: radial-gradient(circle at 50% 0%, transparent 62%, #ff8c00 64%, #ffd700 70%, transparent 74%);
+  position: relative;
+}
+
+.toran-diya {
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 10px;
+  background: radial-gradient(circle, #fff7c2 10%, #ffaa00 60%, transparent 80%);
+  border-radius: 50%;
+  box-shadow: 0 0 10px #ffaa00, 0 0 20px #ff6600;
+  animation: diyaBlink 2.5s ease-in-out infinite alternate;
+}
+
+.toran-arch:nth-child(even) .toran-diya {
+  animation-delay: 1.2s;
+}
+
+@keyframes diyaBlink {
+  0% { transform: translateX(-50%) scale(0.8); opacity: 0.7; }
+  100% { transform: translateX(-50%) scale(1.25); opacity: 1; }
+}
+
+/* Main Canvas fills viewport */
+canvas#c {
+  position: fixed;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+/* ==========================================================================
+   HR LEARNER HUB — DIWALI GREETING CARD OVERLAY
+   ========================================================================== */
+
+#greeting-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 1.3s cubic-bezier(0.16, 1, 0.3, 1), transform 1.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#greeting-overlay.visible {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+.greeting-card {
+  position: relative;
+  max-width: 760px;
+  width: 92%;
+  padding: 40px 36px 36px;
+  background: radial-gradient(circle at 50% 20%, rgba(38, 12, 60, 0.88) 0%, rgba(14, 6, 28, 0.94) 80%);
+  border-radius: 28px;
+  border: 2px solid rgba(255, 215, 0, 0.55);
+  box-shadow: 
+    0 25px 70px rgba(0, 0, 0, 0.85),
+    0 0 50px rgba(255, 170, 0, 0.25),
+    0 0 100px rgba(218, 50, 130, 0.15),
+    inset 0 0 30px rgba(255, 215, 0, 0.12);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  text-align: center;
+  overflow: hidden;
+  animation: cardFloat 6s ease-in-out infinite alternate;
+}
+
+@keyframes cardFloat {
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(-8px); }
+}
+
+/* Ornate corner ornaments */
+.corner-ornament {
+  position: absolute;
+  width: 38px;
+  height: 38px;
+  border: 2px solid #ffd700;
+  pointer-events: none;
+  opacity: 0.75;
+}
+.corner-ornament.top-left {
+  top: 12px;
+  left: 12px;
+  border-right: none;
+  border-bottom: none;
+  border-top-left-radius: 12px;
+}
+.corner-ornament.top-right {
+  top: 12px;
+  right: 12px;
+  border-left: none;
+  border-bottom: none;
+  border-top-right-radius: 12px;
+}
+.corner-ornament.bottom-left {
+  bottom: 12px;
+  left: 12px;
+  border-right: none;
+  border-top: none;
+  border-bottom-left-radius: 12px;
+}
+.corner-ornament.bottom-right {
+  bottom: 12px;
+  right: 12px;
+  border-left: none;
+  border-top: none;
+  border-bottom-right-radius: 12px;
+}
+
+/* Auspicious Diya Emblem */
+.diya-crest {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+  position: relative;
+}
+
+.diya-icon {
+  font-size: 42px;
+  line-height: 1;
+  filter: drop-shadow(0 0 16px rgba(255, 170, 0, 0.95)) drop-shadow(0 0 35px rgba(255, 80, 0, 0.6));
+  animation: flameGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes flameGlow {
+  0% { transform: scale(0.96); filter: drop-shadow(0 0 14px rgba(255, 170, 0, 0.9)) drop-shadow(0 0 28px rgba(255, 80, 0, 0.5)); }
+  100% { transform: scale(1.06); filter: drop-shadow(0 0 22px rgba(255, 220, 0, 1)) drop-shadow(0 0 45px rgba(255, 100, 0, 0.8)); }
+}
+
+.festive-tag {
+  display: inline-block;
+  padding: 6px 18px;
+  margin-bottom: 14px;
+  font-family: var(--font-royal);
+  font-size: 13px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--color-gold-light);
+  background: rgba(255, 215, 0, 0.12);
+  border: 1px solid rgba(255, 215, 0, 0.35);
+  border-radius: 50px;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.15);
+}
+
+/* 1. HAPPY DIWALI! */
+h1.diwali-title {
+  margin: 0 0 10px;
+  font-family: var(--font-royal);
+  font-weight: 900;
+  font-size: clamp(34px, 6.2vw, 68px);
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #ffffff 0%, #fff0a3 22%, #ffd700 48%, #ff9d00 75%, #ffe680 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: goldShimmer 4.5s linear infinite;
+  filter: drop-shadow(0 3px 18px rgba(255, 190, 0, 0.75)) drop-shadow(0 0 45px rgba(255, 100, 0, 0.4));
+  line-height: 1.15;
+}
+
+@keyframes goldShimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* 2. HR LEARNER HUB */
+.brand-box {
+  margin: 14px 0 12px;
+  position: relative;
+  display: inline-block;
+  padding: 6px 28px;
+}
+
+.brand-box::before, .brand-box::after {
+  content: '✦';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #ffd700;
+  font-size: 16px;
+  opacity: 0.85;
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.8);
+}
+.brand-box::before { left: 4px; }
+.brand-box::after { right: 4px; }
+
+h2.brand-name {
+  margin: 0;
+  font-family: var(--font-royal);
+  font-weight: 800;
+  font-size: clamp(24px, 4.4vw, 44px);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-shadow: 
+    0 0 15px rgba(255, 215, 0, 0.8),
+    0 0 30px rgba(255, 140, 0, 0.6),
+    0 2px 4px rgba(0, 0, 0, 0.9);
+  line-height: 1.2;
+}
+
+/* 3. Wishes to All Mentors and Learners */
+h3.brand-wishes {
+  margin: 6px 0 18px;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 600;
+  font-size: clamp(16px, 2.5vw, 24px);
+  letter-spacing: 1px;
+  color: #ffe8b5;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8), 0 0 18px rgba(255, 200, 100, 0.4);
+}
+
+/* Festive Blessing / Tagline */
+p.greeting-tagline {
+  margin: 0 auto 22px;
+  max-width: 580px;
+  font-size: clamp(13px, 1.8vw, 15px);
+  line-height: 1.6;
+  color: #f7e3cc;
+  opacity: 0.92;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.7);
+}
+
+/* Replay Button inside card / Action row */
+.card-actions {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+/* ==========================================================================
+   FESTIVE BUTTONS & CONTROLS
+   ========================================================================== */
+
+#controls-bar {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.festive-btn {
+  background: rgba(26, 10, 44, 0.82);
+  border: 1.5px solid rgba(255, 215, 0, 0.5);
+  border-radius: 50px;
+  color: #ffd700;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  padding: 9px 18px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.5), 0 0 12px rgba(255, 215, 0, 0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  outline: none;
+}
+
+.festive-btn:hover {
+  background: rgba(255, 215, 0, 0.22);
+  border-color: #ffd700;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 22px rgba(255, 215, 0, 0.35);
+}
+
+.festive-btn:active {
+  transform: translateY(1px);
+}
+
+.festive-btn.primary {
+  background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+  border-color: #ffd700;
+  color: #fff;
+  padding: 11px 24px;
+  font-size: 14px;
+  box-shadow: 0 4px 20px rgba(217, 119, 6, 0.5), 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.festive-btn.primary:hover {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 26px rgba(245, 158, 11, 0.65), 0 0 25px rgba(255, 215, 0, 0.5);
+}
+
+.btn-icon {
+  width: 17px;
+  height: 17px;
+  fill: currentColor;
+}
+
+/* ==========================================================================
+   FOOTER CREDIT (Preserved from existing project with enhanced aesthetics)
+   ========================================================================== */
+
+p.footer-credit {
+  margin: 0;
+  position: absolute;
+  left: 16px;
+  bottom: 14px;
+  color: #ffdca8;
+  font-size: 13px;
+  z-index: 20;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+  pointer-events: auto;
+}
+
+p.footer-credit a {
+  color: #fff3d9;
+  text-decoration: none;
+  font-weight: 700;
+  border-bottom: 1px dotted rgba(255, 215, 0, 0.5);
+  transition: all 0.2s;
+}
+
+p.footer-credit a:hover {
+  color: #ffd700;
+  border-bottom-color: #ffd700;
+}
+
+p.footer-credit span {
+  font-size: 12px;
+  color: #ffdca8;
+  opacity: 0.9;
+  margin-left: 8px;
+}
+
+/* ==========================================================================
+   ACCESSIBILITY & RESPONSIVE ADJUSTMENTS
+   ========================================================================== */
+
+@media (max-width: 600px) {
+  .greeting-card {
+    padding: 30px 20px 24px;
+  }
+  #controls-bar {
+    top: 10px;
+    right: 10px;
+    gap: 6px;
+  }
+  .festive-btn {
+    padding: 7px 12px;
+    font-size: 12px;
+  }
+  p.footer-credit {
+    font-size: 11px;
+    left: 10px;
+    bottom: 8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  #greeting-overlay {
+    opacity: 1 !important;
+    transform: none !important;
+    pointer-events: auto !important;
+  }
+}
